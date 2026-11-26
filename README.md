@@ -31,7 +31,8 @@ The system provides automatic language detection, image preprocessing, digit seg
 DigitReader/
 │
 ├── src/
-│   └── main.py
+│   ├── main.py
+│   └── README.md
 │
 ├── models/
 │   ├── digit_model.pt
@@ -58,9 +59,7 @@ git clone https://github.com/masoumehmiirzaee/DigitReader.git
 cd DigitReader
 ```
 
-### 2. Install Dependencies
-
-It is recommended to use a Python virtual environment.
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv venv
@@ -74,13 +73,77 @@ Activate the environment:
 venv\Scripts\activate
 ```
 
-Install the required packages:
+**Linux / macOS:**
+
+```bash
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Prepare Model Files
+Required packages include:
+
+- PyTorch
+- NumPy
+- OpenCV
+- Pillow
+
+### 4. Tkinter Requirement
+
+DigitReader uses Tkinter for its graphical user interface.
+
+Tkinter is included with most standard Python installations and does not need to be installed using pip.
+
+**Windows:**
+
+Make sure Tcl/Tk support is included in your Python installation.
+
+To test Tkinter, run:
+
+```bash
+python -m tkinter
+```
+
+If a small graphical window opens, Tkinter is working correctly.
+
+**Troubleshooting Tcl/Tk on Windows:**
+
+If you encounter the error:
+
+```text
+_tkinter.TclError: Can't find a usable init.tcl
+```
+
+Check that the Tcl and Tk directories exist in your Python installation.
+
+For a standard Python 3.13 installation, you can set the paths in CMD:
+
+```cmd
+set "TCL_LIBRARY=%LOCALAPPDATA%\Programs\Python\Python313\tcl\tcl8.6"
+set "TK_LIBRARY=%LOCALAPPDATA%\Programs\Python\Python313\tcl\tk8.6"
+```
+
+If Python is installed in another location or version, adjust these paths accordingly.
+
+Then test Tkinter again:
+
+```cmd
+python -m tkinter
+```
+
+**Linux:**
+
+On Ubuntu or Debian-based distributions, install Tkinter using:
+
+```bash
+sudo apt install python3-tk
+```
+
+### 5. Prepare Model Files
 
 Make sure the trained model files are placed inside the `models/` directory.
 
@@ -116,14 +179,24 @@ Application screenshots are available in the `screenshots/` directory.
 ### Persian Digit Recognition
 
 ![Persian Digit Recognition](screenshots/persian-digit-recognition.png)
+
 ### English Digit Recognition
 
 ![English Digit Recognition](screenshots/english-digit-recognition.png.png)
+
 ## Model Information
 
 DigitReader uses separate deep learning models for Persian and English digit classification.
 
 The V2 architecture also supports a 20-class language detection model, consisting of 10 Persian and 10 English digit classes.
+
+## Recognition Performance
+
+The automatic language detection feature is still experimental and may occasionally misclassify digits.
+
+In current testing, automatic language detection achieved approximately 90% correct results. Performance may vary depending on image quality, handwriting style, and digit similarity.
+
+For more reliable results, users can manually select Persian or English recognition mode.
 
 ## License
 
