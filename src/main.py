@@ -9,16 +9,27 @@ from tkinter import filedialog, messagebox, ttk
 from PIL import Image, ImageTk
 import torch.nn as nn
 
-# مسیر درست هم برای اجرای عادی و هم برای exe (PyInstaller)
-BASE = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
-PERSIAN_MODEL_PATH = os.path.join(BASE, "digit_model.pt")
-PERSIAN_V2_PATH = os.path.join(BASE, "digit_model_v2.pt")
-ENGLISH_V2_PATH = os.path.join(BASE, "english_digit_model_v2.pt")
+# مسیر مدل‌ها برای اجرای عادی و نسخه exe (PyInstaller)
+if getattr(sys, "frozen", False):
+    BASE = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
+    MODEL_DIR = os.path.join(BASE, "models")
+
+    # سازگاری با نسخه‌های قبلی exe
+    if not os.path.isdir(MODEL_DIR):
+        MODEL_DIR = BASE
+else:
+    PROJECT_ROOT = os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))
+    )
+    MODEL_DIR = os.path.join(PROJECT_ROOT, "models")
+
+PERSIAN_MODEL_PATH = os.path.join(MODEL_DIR, "digit_model.pt")
+PERSIAN_V2_PATH = os.path.join(MODEL_DIR, "digit_model_v2.pt")
+ENGLISH_V2_PATH = os.path.join(MODEL_DIR, "english_digit_model_v2.pt")
 USE_V2 = os.path.isfile(PERSIAN_V2_PATH) and os.path.isfile(ENGLISH_V2_PATH)
-LANG_V2_PATH = os.path.join(BASE, "lang_model_v2.pt")   # مدل ۲۰ کلاسه برای تشخیص زبان
-REVERSE_PERSIAN = False   # اعداد فارسی هم از چپ به راست نوشته می‌شوند؛ فقط برای تست True کن
-ENGLISH_MODEL_PATH = os.path.join(BASE, "english_digit_model.pt")
-DEVICE = torch.device("cpu")
+LANG_V2_PATH = os.path.join(MODEL_DIR, "lang_model_v2.pt")
+REVERSE_PERSIAN = False
+ENGLISH_MODEL_PATH = os.path.join(MODEL_DIR, "english_digit_model.pt")
 PERSIAN_DIGITS = "۰۱۲۳۴۵۶۷۸۹"
 MIN_CONF = 0.35   # تشخیص‌های کم‌اطمینان‌تر نادیده گرفته می‌شوند
 MODE_AUTO, MODE_FA, MODE_EN = "تشخیص خودکار", "فارسی", "English"
