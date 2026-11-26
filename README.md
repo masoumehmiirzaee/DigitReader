@@ -113,6 +113,10 @@ The graphical interface will open and allow you to select an image for digit rec
 
 Application screenshots are available in the `screenshots/` directory.
 
+### Persian Digit Recognition
+
+![Persian Digit Recognition](screenshots/persian-digit-recognition.png)
+
 ## Model Information
 
 DigitReader uses separate deep learning models for Persian and English digit classification.
