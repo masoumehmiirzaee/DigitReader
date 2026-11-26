@@ -1,51 +1,124 @@
 # DigitReader
+### Persian and English Handwritten Digit Recognition System
 
-**DigitReader** is a desktop application for recognizing handwritten Persian and English digits from images.
+DigitReader is a Python-based desktop application designed to recognize handwritten Persian and English digits from images using deep learning techniques.
+
+The system provides automatic language detection, image preprocessing, digit segmentation, and confidence-based recognition through a graphical user interface.
 
 ## Features
 
-- Persian digit recognition (0–9)
-- English digit recognition (0–9)
-- Automatic language detection
-- Confidence score for predictions
-- Graphical user interface
-- Deep learning-based digit classification using PyTorch
-
-## Application
-
-DigitReader provides a simple interface that allows users to upload an image containing a handwritten digit and receive a recognition result.
+- **Persian Digit Recognition:** Recognizes handwritten Persian digits (۰–۹).
+- **English Digit Recognition:** Recognizes handwritten English digits (0–9).
+- **Automatic Language Detection:** Automatically identifies the digit language.
+- **Image Processing:** Preprocesses images and segments individual digits.
+- **Confidence Score:** Provides prediction confidence for recognized digits.
+- **Graphical User Interface:** User-friendly desktop application built with Tkinter.
+- **Multiple Recognition Modes:** Automatic, Persian-only, and English-only recognition.
 
 ## Technologies
 
 - Python
 - PyTorch
-- Torchvision
+- OpenCV
+- NumPy
+- Pillow
 - Tkinter
-- Deep Learning
-- Image Processing
+- Convolutional Neural Networks (CNN)
 
 ## Project Structure
 
 ```text
 DigitReader/
+│
 ├── src/
+│   └── main.py
+│
 ├── models/
+│   ├── digit_model.pt
+│   ├── digit_model_v2.pt
+│   ├── english_digit_model.pt
+│   ├── english_digit_model_v2.pt
+│   └── lang_model_v2.pt
+│
 ├── assets/
 ├── screenshots/
-├── README.md
+│
 ├── requirements.txt
+├── README.md
 ├── .gitignore
 └── LICENSE
 ```
 
 ## Installation
 
-Installation instructions and dependencies will be added as the source code and model files are organized.
+### 1. Clone the Repository
 
-## Download
+```bash
+git clone https://github.com/masoumehmiirzaee/DigitReader.git
+cd DigitReader
+```
 
-The standalone Windows application will be available in the **Releases** section.
+### 2. Install Dependencies
+
+It is recommended to use a Python virtual environment.
+
+```bash
+python -m venv venv
+```
+
+Activate the environment:
+
+**Windows:**
+
+```bash
+venv\Scripts\activate
+```
+
+Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Prepare Model Files
+
+Make sure the trained model files are placed inside the `models/` directory.
+
+The application supports both the original models and the V2 models.
+
+The language detection model is used when available.
+
+## Running the Application
+
+Run the following command from the project root directory:
+
+```bash
+python src/main.py
+```
+
+The graphical interface will open and allow you to select an image for digit recognition.
+
+## How to Use
+
+1. Launch the application.
+2. Click **Select Image** to upload an image.
+3. Choose the recognition mode:
+   - Automatic Detection
+   - Persian
+   - English
+4. View the recognized digits and confidence scores.
+5. Inspect the processed image and detection results.
+
+## Application Screenshots
+
+Application screenshots are available in the `screenshots/` directory.
+
+## Model Information
+
+DigitReader uses separate deep learning models for Persian and English digit classification.
+
+The V2 architecture also supports a 20-class language detection model, consisting of 10 Persian and 10 English digit classes.
 
 ## License
 
-MIT License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
