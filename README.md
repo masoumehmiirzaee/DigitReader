@@ -118,7 +118,7 @@ Application screenshots are available in the `screenshots/` directory.
 ![Persian Digit Recognition](screenshots/persian-digit-recognition.png)
 ### English Digit Recognition
 
-![English Digit Recognition](screenshots/english-digit-recognition.png)
+![English Digit Recognition](screenshots/english-digit-recognition.png.png)
 ## Model Information
 
 DigitReader uses separate deep learning models for Persian and English digit classification.
