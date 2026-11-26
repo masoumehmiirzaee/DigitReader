@@ -32,7 +32,7 @@ REVERSE_PERSIAN = False
 ENGLISH_MODEL_PATH = os.path.join(MODEL_DIR, "english_digit_model.pt")
 DEVICE = torch.device("cpu")
 PERSIAN_DIGITS = "۰۱۲۳۴۵۶۷۸۹"
-MIN_CONF = 0.35   # تشخیص‌های کم‌اطمینان‌تر نادیده گرفته می‌شوند
+MIN_CONF = 0.35  # تشخیص‌های کم‌اطمینان‌تر نادیده گرفته می‌شوند
 MODE_AUTO, MODE_FA, MODE_EN = "تشخیص خودکار", "فارسی", "English"
 
 
