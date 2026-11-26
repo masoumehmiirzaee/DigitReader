@@ -30,6 +30,7 @@ USE_V2 = os.path.isfile(PERSIAN_V2_PATH) and os.path.isfile(ENGLISH_V2_PATH)
 LANG_V2_PATH = os.path.join(MODEL_DIR, "lang_model_v2.pt")
 REVERSE_PERSIAN = False
 ENGLISH_MODEL_PATH = os.path.join(MODEL_DIR, "english_digit_model.pt")
+DEVICE = torch.device("cpu")
 PERSIAN_DIGITS = "۰۱۲۳۴۵۶۷۸۹"
 MIN_CONF = 0.35   # تشخیص‌های کم‌اطمینان‌تر نادیده گرفته می‌شوند
 MODE_AUTO, MODE_FA, MODE_EN = "تشخیص خودکار", "فارسی", "English"
